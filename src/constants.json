@@ -1,0 +1,4 @@
+{
+  "AMAZON_GATEWAY_URL": "https://q0gcwefgd1.execute-api.us-east-1.amazonaws.com",
+  "SERVERLESS_STAGE": "staging"
+}
