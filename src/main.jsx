@@ -14,10 +14,9 @@ import createLogger from 'redux-logger';
 
 import Router from './routes.jsx';
 
-import reducer from './redux/ducks';
-import appSaga from './redux/sagas';
+import { reducer, saga } from './modules';
 
-const sagaMiddleware = createSagaMiddleware(appSaga);
+const sagaMiddleware = createSagaMiddleware(saga);
 
 const reduxRouterMiddleware = syncHistory(browserHistory);
 
