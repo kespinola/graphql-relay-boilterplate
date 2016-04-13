@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 
-import PassThrough from './components/PassThrough';
-import App from './components/App';
-import Home from './components/Home';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import Account from './components/Account';
-import Users from './components/Users';
-import Roles from './components/Roles';
+import PassThrough from './handlers/PassThrough';
+import App from './handlers/App';
+import Home from './handlers/Home';
+import SignUp from './handlers/SignUp';
+import SignIn from './handlers/SignIn';
+import Account from './handlers/Account';
+import Users from './handlers/Users';
+import Roles from './handlers/Roles';
 
 export default () => (
   <Router history={browserHistory}>
