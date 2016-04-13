@@ -1,0 +1,3 @@
+# Prism Client
+
+![gif of app](https://s3-us-west-2.amazonaws.com/espi-app/assets/prism_app.gif?X-Amz-Date=20160413T052704Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=8ee81760eb41c66e2f6bd46918964efa64de3c2e58294a302ecf55f1a16f8942&X-Amz-Credential=ASIAIQLKPHCOB6MMJ42Q/20160413/us-west-2/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzED8aDPn8KxRAlwxj2/FEGCLHAasQSwUJK983OQTZLPkMeG7b6KyDXa4v1rrHTbcCQMpYlEgbcSnQWE%2BcBW3XZTa8LmZkIHWmYGhuc7zXcsAB1/rdQ4P3lLuIuUp7HagdP4bOqn8Ex7hlQRk%2BWifEkJTwcErAOMaZKW%2B6qhNdJzZxXZ%2Btr4cF9p3uZtF2iafqHZebo5H/Qfhjvp6TTGCIKYrP0Qh40%2BbKXFnZiWTL/xh40VxMN0/i8mBFICdLE2ho5K1cMbBhFnxhFqZq%2B0chtZQwW4IR7ypTEYYooJW3uAU%3D)
