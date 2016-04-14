@@ -73,6 +73,5 @@ const Roles = ({
 };
 
 export default compose(
-  dialogControl('roles'),
   userInfo
 )(Roles);

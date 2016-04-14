@@ -1,15 +1,27 @@
 import { put, fork } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import { push } from 'react-router-redux';
-import { get } from 'superagent-bluebird-promise';
 import { SIGN_UP_REQUEST, SIGN_OUT_REQUEST, SIGN_IN_REQUEST } from './duck';
-import { getServerlessEndpoint } from './../../utils';
+import superagent from 'superagent';
+import aws4 from 'aws4';
+import constants from './../../constants';
 
-const serverlessEndpoint = getServerlessEndpoint();
+const {
+  AMAZON_GATEWAY_URL,
+  SERVERLESS_STAGE,
+  AWS_CRED,
+} = constants;
+const serverlessUrl = `${AMAZON_GATEWAY_URL}/${SERVERLESS_STAGE}`;
+const authorization = aws4.sign({ host: AMAZON_GATEWAY_URL }, AWS_CRED).headers;
 
 function* signUp({ payload }) {
-  debugger;
-  const response = yield get(`${serverlessEndpoint}/signup`);
+  console.log(aws4.sign(AMAZON_GATEWAY_URL, AWS_CRED));
+  const response =
+    yield superagent
+      .post(`${serverlessUrl}/signup`)
+      .set('Authorization', authorization)
+      .withCredentials()
+      .send({ user: payload });
   debugger;
 
   yield put(push('/'));
