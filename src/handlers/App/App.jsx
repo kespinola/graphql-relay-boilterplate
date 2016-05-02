@@ -16,8 +16,7 @@ import {
 import { SelectableContainerEnhance } from 'material-ui/lib/hoc/selectable-enhance';
 import navControl from './../../modules/navigation/interface';
 import authControl from './../../modules/auth/interface';
-import userInfo from './../../modules/user/interface';
-
+import { userFragment } from './../../modules/user';
 const SelectableList = SelectableContainerEnhance(List);
 
 function App(props) {
@@ -46,59 +45,59 @@ function App(props) {
   const { initials } = user;
   return (
     <AppCanvas>
-      <AppBar
-        onTitleTouchTap={goHome}
-        title="Prism"
-        onLeftIconButtonTouchTap={toggleNav}
-        iconElementRight={!isEmpty(user) ? (
-          <ToolbarGroup>
-            <IconMenu
-              iconButtonElement={
-                <Avatar>{initials && initials}</Avatar>
-              }
-              anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
-              targetOrigin={{ horizontal: 'left', vertical: 'top' }}
-            >
-              <MenuItem primaryText="Account" onClick={goAccount} />
-              <MenuItem primaryText="Logout" onClick={signOutRequest} />
-            </IconMenu>
-          </ToolbarGroup>
-        ) : (
-          <ToolbarGroup>
-            <FlatButton
-              primary
-              label="Sign In"
-              onClick={goSignIn}
+        <AppBar
+          onTitleTouchTap={goHome}
+          title="Prism"
+          onLeftIconButtonTouchTap={toggleNav}
+          iconElementRight={!isEmpty(user) ? (
+            <ToolbarGroup>
+              <IconMenu
+                iconButtonElement={
+                  <Avatar>{initials && initials}</Avatar>
+                }
+                anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+                targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+              >
+                <MenuItem primaryText="Account" onClick={goAccount} />
+                <MenuItem primaryText="Logout" onClick={signOutRequest} />
+              </IconMenu>
+            </ToolbarGroup>
+          ) : (
+            <ToolbarGroup>
+              <FlatButton
+                primary
+                label="Sign In"
+                onClick={goSignIn}
+              />
+              <RaisedButton
+                primary
+                label="Sign Up"
+                onClick={goSignUp}
+              />
+            </ToolbarGroup>
+          )}
+        />
+      <LeftNav
+        docked={false}
+        open={open}
+        onRequestChange={toggleNav}
+      >
+        <SelectableList valueLink={{ value: pathname, requestChange: onRequestChangeList }} >
+          {isAdmin && (
+            <ListItem
+              primaryText="Admin"
+              nestedItems={[
+                <ListItem primaryText="Users" value="/admin" />,
+                <ListItem primaryText="Roles" value="/admin/roles" />,
+              ]}
             />
-            <RaisedButton
-              primary
-              label="Sign Up"
-              onClick={goSignUp}
-            />
-          </ToolbarGroup>
-        )}
-      />
-    <LeftNav
-      docked={false}
-      open={open}
-      onRequestChange={toggleNav}
-    >
-      <SelectableList valueLink={{ value: pathname, requestChange: onRequestChangeList }} >
-        {isAdmin && (
-          <ListItem
-            primaryText="Admin"
-            nestedItems={[
-              <ListItem primaryText="Users" value="/admin" />,
-              <ListItem primaryText="Roles" value="/admin/roles" />,
-            ]}
-          />
-        )}
-      </SelectableList>
-      </LeftNav>
-      <div className="app-container">
-        {children}
-      </div>
-    </AppCanvas>
+          )}
+        </SelectableList>
+        </LeftNav>
+        <div className="app-container">
+          {children}
+        </div>
+      </AppCanvas>
   );
 }
 
@@ -119,7 +118,7 @@ App.defaultProps = {
 };
 
 export default compose(
+  userFragment,
   navControl,
-  userInfo,
   authControl
 )(App);

@@ -11,7 +11,7 @@ import {
 } from 'material-ui';
 import { Grid, Row, Col } from 'react-flexgrid';
 import RoleForm from './../../components/RoleForm';
-import userInfo from './../../modules/user/interface';
+import { userFragment } from './../../modules/user';
 import dialogControl from './../../modules/dialog/interface';
 import { Toolbar, ToolbarGroup, RaisedButton, Dialog } from 'material-ui';
 
@@ -73,5 +73,5 @@ const Roles = ({
 };
 
 export default compose(
-  userInfo
+  userFragment
 )(Roles);

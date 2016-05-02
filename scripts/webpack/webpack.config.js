@@ -3,16 +3,17 @@ import autoprefixer from 'autoprefixer';
 import precss from 'precss';
 import { join } from 'path';
 
-const { HOST, PORT } = process.env;
+const {
+  HOST,
+  PORT,
+} = process.env;
 
 export default {
 
   context: join(__dirname, '/../../src'),
 
   entry: {
-    bundle: [
-      './index.js',
-    ],
+    bundle: './client',
   },
 
   output: {
@@ -68,6 +69,13 @@ export default {
   },
 
   plugins: [
+    new webpack.EnvironmentPlugin([
+      "AWS_ACCESS_ID",
+      "AWS_ACCESS_SECRET",
+      "SERVERLESS_URL",
+      "AWS_REGION",
+      "AWS_SERVICE",
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),

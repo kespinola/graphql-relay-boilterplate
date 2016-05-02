@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'ramda';
 import { Grid, Row, Col } from 'react-flexgrid';
 import authInterface from './../../modules/auth/interface';
-import userInfo from './../../modules/user/interface';
+import { userFragment } from './../../modules/user';
 import UserForm from './../../components/UserForm';
 
 const SignUp = ({ auth: { actions: { signUpRequest } } }) => {
@@ -19,5 +19,5 @@ const SignUp = ({ auth: { actions: { signUpRequest } } }) => {
 
 export default compose(
   authInterface,
-  userInfo,
+  userFragment
 )(SignUp);
