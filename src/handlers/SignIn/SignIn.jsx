@@ -2,7 +2,6 @@ import React from 'react';
 import { compose } from 'ramda';
 import { Grid, Row, Col } from 'react-flexgrid';
 import authControl from './../../modules/auth/interface';
-import { userFragment } from './../../modules/user';
 import UserForm from './../../components/UserForm';
 
 const SignIn = ({ auth: { actions: { signInRequest } } }) => {
@@ -18,6 +17,5 @@ const SignIn = ({ auth: { actions: { signInRequest } } }) => {
 };
 
 export default compose(
-  authControl,
-  userFragment
+  authControl
 )(SignIn);

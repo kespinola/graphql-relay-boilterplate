@@ -1,7 +1,6 @@
 import React from 'react';
 import { compose } from 'ramda';
 import { Grid, Row, Col } from 'react-flexgrid';
-import { userFragment } from './../../modules/user';
 import AccountForm from './../../components/AccountForm';
 
 const Account = ({ user, collection: { actions: { update } } }) => (
@@ -14,6 +13,4 @@ const Account = ({ user, collection: { actions: { update } } }) => (
   </Grid>
 );
 
-export default compose(
-  userFragment
-)(Account);
+export default Account;

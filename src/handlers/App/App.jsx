@@ -1,3 +1,4 @@
+import Relay from 'react-relay';
 import React, { PropTypes } from 'react';
 import { compose, isEmpty } from 'ramda';
 import {
@@ -16,7 +17,6 @@ import {
 import { SelectableContainerEnhance } from 'material-ui/lib/hoc/selectable-enhance';
 import navControl from './../../modules/navigation/interface';
 import authControl from './../../modules/auth/interface';
-import { userFragment } from './../../modules/user';
 const SelectableList = SelectableContainerEnhance(List);
 
 function App(props) {
@@ -117,8 +117,15 @@ App.defaultProps = {
   user: {},
 };
 
-export default compose(
-  userFragment,
-  navControl,
-  authControl
-)(App);
+const AppContainer = Relay.createContainer(App, {
+  fragments: {
+    user: () => Relay.QL`
+      fragment on User {
+        first_name,
+        last_name
+      }
+    `,
+  },
+});
+
+export default AppContainer;
