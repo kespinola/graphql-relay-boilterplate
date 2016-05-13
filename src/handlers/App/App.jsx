@@ -117,7 +117,12 @@ App.defaultProps = {
   user: {},
 };
 
-const AppContainer = Relay.createContainer(App, {
+const ConnectedApp = compose(
+  navControl,
+  authControl
+)(App);
+
+const AppContainer = Relay.createContainer(ConnectedApp, {
   fragments: {
     user: () => Relay.QL`
       fragment on User {
